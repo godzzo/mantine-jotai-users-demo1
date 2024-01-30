@@ -11,7 +11,7 @@ export async function getUser(id: number) {
 	return getUserImpl(id);
 }
 export async function getUserEx(id: number, signal: AbortSignal) {
-	return await waitCall(() => getUserImpl(id), signal);
+	return await waitCall(async () => getUserImpl(id), signal);
 }
 function getUserImpl(id: number) {
 	const found = data.find((e) => e.id === id);
@@ -41,7 +41,7 @@ export async function queryUsers(text: string) {
 }
 
 export async function queryUsersEx(text: string, signal: AbortSignal) {
-	return await waitCall(() => locateUsers(text), signal);
+	return await waitCall(async () => locateUsers(text), signal);
 }
 
 function locateUsers(text: string) {
