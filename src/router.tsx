@@ -6,6 +6,7 @@ import { HomeView } from './views/HomeView';
 import { UsersView } from './views/UsersView';
 import { JoUserStepper } from './views/JoUserStepper';
 import { AsyncErrorView } from './views/AsyncErrorView';
+import { LoadableView } from './views/LoadableView';
 
 export const currentLinks = [
 	{
@@ -27,6 +28,11 @@ export const currentLinks = [
 		path: '/asnyc-error',
 		element: <AsyncErrorView />,
 		caption: 'async error',
+	},
+	{
+		path: '/loadable',
+		element: <LoadableView />,
+		caption: 'loadable',
 	},
 ];
 
