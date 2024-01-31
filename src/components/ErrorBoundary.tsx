@@ -1,3 +1,4 @@
+import { Button, Stack } from '@mantine/core';
 import { Component, ErrorInfo, ReactNode, createElement } from 'react';
 
 interface ErrorBoundaryProps {
@@ -33,7 +34,26 @@ export class ErrorBoundary extends Component<
 
 	render() {
 		if (this.state.hasError) {
-			return createElement(this.props.fallback, { ...this.state }, null);
+			const show = createElement(
+				this.props.fallback,
+				{ ...this.state },
+				null
+			);
+
+			return (
+				<Stack>
+					<Button
+						variant="light"
+						color="red"
+						onClick={() => {
+							this.setState({ hasError: false });
+						}}
+					>
+						Rerender
+					</Button>
+					{show}
+				</Stack>
+			);
 		}
 
 		return this.props.children;

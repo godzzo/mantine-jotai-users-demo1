@@ -38,7 +38,14 @@ export function UserForm() {
 }
 
 function FormLoader() {
-	const currentUser = useAtomValue(currentUserExAtom);
+	let currentUser;
+
+	try {
+		currentUser = useAtomValue(currentUserExAtom);
+	} catch (e) {
+		console.log('FormLoader ERROR', e);
+		throw e;
+	}
 
 	return <FormControls key={currentUser.id} user={currentUser} />;
 }
